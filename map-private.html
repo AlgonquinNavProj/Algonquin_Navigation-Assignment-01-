@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My College Map</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+    <header>
+            <h1>College Navigation</h1>
+    </header>
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="collegeMap.html">College Map</a>
+        <a href="schedule.html">Schedule</a>
+        <a href="reference.html">Reference</a>
+    </nav>
+
+<main>
+
+    <!-- ADD NEW LOCATION FORM -->
+    <section id="add-form">
+        <h2>Add New Location</h2>
+
+        <form id="addLocationForm" class="crud-form">
+
+            <div class="form-group">
+                <label for="name">Name *</label>
+                <input id="name" type="text" required>
+                <span class="error" id="errorName"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="category">Category *</label>
+                <select id="category">
+                    <option value="classroom">Classroom</option>
+                    <option value="office">Office</option>
+                    <option value="cafeteria">Cafeteria</option>
+                    <option value="library">Library</option>
+                </select>
+                <span class="error" id="errorCategory"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="x">X Coordinate *</label>
+                <input id="x" type="number" step="0.1" min="0" max="100">
+                <span class="error" id="errorX"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="y">Y Coordinate *</label>
+                <input id="y" type="number" step="0.1" min="0" max="100">
+                <span class="error" id="errorY"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" maxlength="200"></textarea>
+            </div>
+
+            <button class="btn-primary" type="submit">Save Location</button>
+
+        </form>
+    </section>
+
+    <!-- SEARCH AND FILTER -->
+    <section class="search-section">
+        <input id="searchPrivate" type="text" placeholder="Search my locations...">
+
+        <select id="filterCategoryPrivate">
+            <option value="">All Categories</option>
+            <option value="classroom"> Classrooms</option>
+            <option value="office">Offices</option>
+        </select>
+
+        <button id="searchBtnPrivate" type="button">Filter</button>
+    </section>
+
+    <!-- RESULTS -->
+    <section id="privateResults" class="results-container">
+        <h2>My Locations</h2>
+        <div class="loading">Loading...</div>
+    </section>
+
+</main>
+
+    <footer>
+        <p>&copy; 2026 college navigation</p>
+        <p>Thank you for visiting website &hearts;</p>
+    </footer>
+</body>
+</html>
