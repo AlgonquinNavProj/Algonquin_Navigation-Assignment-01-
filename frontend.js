@@ -5,7 +5,7 @@ const app = express();
 const PORT = 3000;
 
 app.use(express.json());
-app.use(express.static(__WebsiteAssignment02));
+app.use(express.static(__dirname, "WebsiteAssignment02"));
 
 app.post("/submit", (req,res) =>{
     const newEntry = req.body;
@@ -24,5 +24,5 @@ app.post("/submit", (req,res) =>{
 
 //To start the server
 app.listen(PORT, () =>{
-    console.log('Server running pn http://localhost:${PORT}');    
+    console.log('Server running on http://localhost:${PORT}');    
 })
