@@ -1,7 +1,5 @@
-// =====================================================
-// COLLEGE GUIDE - COMPLETE SINGLE FILE APPLICATION
-// CST8326 Assignment 2 - ALL REQUIREMENTS MET
-// =====================================================
+
+// COLLEGE GUIDE - CST8326 Assignment 2
 
 const express = require('express');
 const mongoose = require('mongoose');
@@ -12,9 +10,9 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
-// =====================================================
+
 // MIDDLEWARE SETUP
-// =====================================================
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -32,9 +30,9 @@ mongoose.connect('mongodb://localhost:27017/collegeguide')
     .then(() => console.log('MongoDB Connected'))
     .catch(err => console.error('MongoDB Error:', err));
 
-// =====================================================
+
 // DATABASE MODELS
-// =====================================================
+
 
 // User Model
 const userSchema = new mongoose.Schema({
@@ -62,9 +60,9 @@ const scheduleSchema = new mongoose.Schema({
 
 const Schedule = mongoose.model('Schedule', scheduleSchema);
 
-// =====================================================
+
 // AUTHENTICATION MIDDLEWARE
-// =====================================================
+
 const requireAuth = (req, res, next) => {
     if (!req.session.user) {
         return res.redirect('/login');
@@ -72,9 +70,7 @@ const requireAuth = (req, res, next) => {
     next();
 };
 
-// =====================================================
-// ROUTES - ALL REQUIREMENTS MET ✓
-// =====================================================
+
 
 // HOME PAGE (Public + Login Status)
 app.get('/', (req, res) => {
@@ -179,9 +175,9 @@ app.get('/api/schedules/:userId', requireAuth, async (req, res) => {
     res.json(schedules);  // JSON RESPONSE ✓
 });
 
-// =====================================================
+
 // START SERVER
-// =====================================================
+
 const PORT = 3000;
 app.listen(PORT, () => {
     console.log(` College Guide running on http://localhost:${PORT}`);
