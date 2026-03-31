@@ -15,6 +15,10 @@
             <a href="schedule.html">schedule</a> |
             <a href="Contact.html">Contact</a> |
             <a href="Resources.html">Resources</a> |
+            <span class="nav-search">
+                <input type="text" id="searchBox" placeholder="Search site..." onkeydown="if(event.key==='Enter') goToPage()">
+                <button onclick="goToPage()">Search</button>
+            </span>
         </nav>
 </header>
     <section id="about">
@@ -72,6 +76,6 @@
         </div>
 
     </section>
-
+    <script src="frontend.js"></script>
 </body>
 </html>

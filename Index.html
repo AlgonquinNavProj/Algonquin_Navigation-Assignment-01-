@@ -14,15 +14,18 @@
         <nav>
             <a href="index.html">Home</a> |
             <a href="About.html">About</a> |
-            <a href="schedule.html">schedule</a> |
+            <a href="schedule.html">Schedule</a> |
             <a href="Contact.html">Contact</a> |
             <a href="Resources.html">Resources</a> |
+            <span class="nav-search">
+                <input type="text" id="searchBox" placeholder="Search site..." onkeydown="if(event.key==='Enter') goToPage()">
+                <button onclick="goToPage()">Search</button>
+            </span>
         </nav>
     </header>
 
     <main class="container">
         <section id="home">
-
             <h2>Welcome to Campus Navigator</h2>
 
             <p>
@@ -45,12 +48,17 @@
                 </a>
             </p>
         </section>
+
+        <!-- Error Message when nothing is found-->
+        <p id="searchError" style="color: red; display: none;">
+            No page found for that search. Try: "home", "about", "schedule", "contact", or "resources".
+        </p>
     </main>
 
     <footer>
-        <p>&copy; 2026 Campus Navigator
-                    Contact us | Privacy | References
-        </p>
+        <p>&copy; 2026 Campus Navigator &nbsp;|&nbsp; Contact us | Privacy | References</p>
     </footer>
+
+    <script src="frontend.js"></script>
 </body>
 </html>

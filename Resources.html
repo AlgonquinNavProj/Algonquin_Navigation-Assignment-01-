@@ -17,6 +17,10 @@
             <a href="about.html">About</a>
             <a href="contact.html">Contact</a>
             <a href="resources.html">Resources</a>
+            <span class="nav-search">
+                <input type="text" id="searchBox" placeholder="Search site..." onkeydown="if(event.key==='Enter') goToPage()">
+                <button onclick="goToPage()">Search</button>
+            </span>
         </nav>
     </header>
 
@@ -51,6 +55,6 @@
                     Contact us | Privacy | References
      </p>
  </footer>
-
+        <script src="frontend.js"></script>
 </body>
 </html>
