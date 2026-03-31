@@ -3,45 +3,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>College Schedule</title>
+    <title>Schedule</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-            <h1>College Navigation</h1>
+            <h1>College Guide</h1>
     </header>
     <nav>
         <a href="home.html">Home</a>
         <a href="about.html">About Us</a>
-        <a href="collegeMap.html">College Map</a>
         <a href="schedule.html">Schedule</a>
         <a href="reference.html">Reference</a>
     </nav>
+<div class="topbar">
+    <input type="text" placeholder="Schedule Title">
+    <span> Settings</span>
+</div>
 
-    <main>
-        <section class="search-section">
-            <input type="text" placeholder="Search events...">
-            <option Value="">All Events</option>
-            <option Value="lecture">Lectures</option>
-            <option Value="exam">Exams</option>
-            <option Value="meeting">Meetings</option>
-            <button type="button">Search</button>
-        </section>
+<div class="container">
 
-        <section class="results-container">
-            <h2>Today's Schedule</h2>
-            <div class="loading">Loading...</div>
-        </section>
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <div class="btn" id="addBtn">Add Item</div>
+        <div class="btn" id="editBtn">Edit Item</div>
+        <div class="btn" id="deleteBtn">Delete Item</div>
+    </div>
 
-        <section class="login-prompt">
-            <p>Want to <strong>add your events?</strong></p>
-            <a href="">Login to Manage</a>
-        </section>
+    <!-- SCHEDULE GRID -->
+    <div class="schedule">
 
-    </main>
+        <table border="1" cellspacing="0" cellpadding="8">
 
-    <footer>
-        <p>&copy; 2026 college navigation</p>
-        <p>Thank you for visiting website &hearts;</p>
-    </footer>
+            <!-- HEADER -->
+            <tr>
+                <th>Time</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+                <th>Saturday</th>
+                <th>Sunday</th>
+            </tr>
+
+            <!-- TIME ROWS -->
+            <tr>
+                <td>8:00 AM</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td>9:00 AM</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>            
+            </tr>
+
+            <tr>
+                <td>10:00 AM</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>            
+            </tr>
+
+            <tr>
+                <td>11:00 AM</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>            
+            </tr>
+
+            <tr>
+                <td>12:00 PM</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>            
+            </tr>
+
+            <tr>
+                <td>1:00 PM</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>            
+            </tr>
+
+            <tr>
+                <td>2:00 PM</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>            
+            </tr>
+
+            <tr>
+                <td>3:00 PM</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>            
+            </tr>
+
+            <tr>
+                <td>4:00 PM</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>            
+            </tr>
+
+            <tr>
+                <td>5:00 PM</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>            
+            </tr>
+
+            <tr>
+                <td>6:00 PM</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>            
+            </tr>
+
+            <tr>
+                <td>7:00 PM</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>            
+            </tr>
+
+            <tr>
+                <td>8:00 PM</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>            
+            </tr>
+
+        </table>
+    </div>
+</div>
+<script src="main.js"></script>
+
 </body>
 </html>
