@@ -44,7 +44,7 @@ function goToPage() {
     else if (input.includes("about")) {
         window.location.href = "About.html";
     }
-    else if (input.includes("schedule") || input.includes("class") || input.includes("timetable")) {
+    else if (input.includes("schedule") || input.includes("class") || input.includes("timetable")|| input.includes("courses")|| input.includes("cst")+) {
         window.location.href = "schedule.html";
     }
     else if (input.includes("contact") || input.includes("email") || input.includes("help")) {
