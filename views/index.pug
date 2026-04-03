@@ -1,0 +1,37 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Index
+    link(rel='stylesheet' href='/style.css')
+
+  body
+    header.site-header
+      .header-top
+        img.logo(src='/images/logo.png')
+        .title-box The College Guide
+
+    nav.nav-bar
+      .nav-left
+      .nav-center
+        a(href="/") Home
+        a(href="/about") About
+        a(href="/schedule") Schedule
+        a(href="/contact") Contact
+        a(href="/resources") Resources
+      .nav-right
+        a.login-button(href="/login") Login/Register
+
+    main.container
+      section#home
+        h2 Welcome to The College Guide
+        p This program is a real-life tool that helps students navigate easily through college.
+        p We are a non-for-profit team that serves the community.
+        p Navigate your new school, schedule and campus easily.
+        p
+          | Visit Algonquin College here:
+          a(href='https://www.algonquincollege.com/' target='_blank') Algonquin College Website
+
+    footer
+      p © 2026 The College Guide | Contact us | Privacy | References

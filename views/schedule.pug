@@ -1,0 +1,62 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Schedule
+    link(rel='stylesheet' href='/style.css')
+
+  body
+    header.site-header
+      .header-top
+        img.logo(src='/images/logo.png')
+        .title-box The College Guide
+
+    nav.nav-bar
+      .nav-left
+      .nav-center
+        a(href="/") Home
+        a(href="/about") About
+        a(href="/schedule") Schedule
+        a(href="/contact") Contact
+        a(href="/resources") Resources
+      .nav-right
+        a.login-button(href="/login") Login/Register
+
+    .topbar
+      input(type='text' placeholder='Schedule Title')
+      span Settings
+
+    .container
+      .sidebar
+        #addBtn.button Add Item
+        #editBtn.button Edit Item
+        #deleteBtn.button Delete Item
+
+      .schedule
+        table(border='1')
+          tr
+            th Time
+            th Monday
+            th Tuesday
+            th Wednesday
+            th Thursday
+            th Friday
+            th Saturday
+            th Sunday
+
+          each time in ['8:00 AM','9:00 AM','10:00 AM','11:00 AM','12:00 PM','1:00 PM','2:00 PM','3:00 PM','4:00 PM','5:00 PM','6:00 PM','7:00 PM','8:00 PM']
+            tr
+              td= time
+              td
+              td
+              td
+              td
+              td
+              td
+              td
+
+    script(src='/main.js')
+
+    footer
+      p © 2026 The College Guide | Contact us | Privacy | References

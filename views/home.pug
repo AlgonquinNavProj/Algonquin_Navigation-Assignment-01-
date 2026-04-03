@@ -1,0 +1,44 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Index
+  link(rel='stylesheet' href='style.css')
+header
+  h1 Campus Navigator
+  p A way to make navigation easier on campus
+  nav
+    a(href='index.html') Home
+    |  |
+    a(href='About.html') About
+    |  |
+    a(href='schedule.html') Schedule
+    |  |
+    a(href='Contact.html') Contact
+    |  |
+    a(href='Resources.html') Resources
+    |  |
+    span.nav-search
+      input#searchBox(type='text' placeholder='Search site...' onkeydown="if(event.key==='Enter') goToPage()")
+      button(onclick='goToPage()') Search
+main.container
+  section#home
+    h2 Welcome to Campus Navigator
+    p
+      | This program is a real-life tool that helps students navigate easily all throughout campus. Campus Navigator uses Algonquin College official maps. We are hoping to be live by 
+      strong Spring 2026
+      |                 . We are hoping to support students and staff adequately, safely and easily.
+    p
+      | We are a non-for-profit team that serves the community with essentials, to make the public day-to-day lives easier.
+    p
+      | Navigate smarter. Discover routes, explore places, and get where you need to go &mdash; faster and easier than ever before.
+    p
+      | Visit Algonquin College here:
+      a(href='https://www.algonquincollege.com/' target='_blank' rel='noopener')
+        | Algonquin College Website
+  // Error Message when nothing is found
+  p#searchError(style='color: red; display: none;')
+    | No page found for that search. Try: &quot;home&quot;, &quot;about&quot;, &quot;schedule&quot;, &quot;contact&quot;, or &quot;resources&quot;.
+footer
+  p &copy; 2026 Campus Navigator &nbsp;|&nbsp; Contact us | Privacy | References
+script(src='frontend.js')

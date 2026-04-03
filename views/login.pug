@@ -1,0 +1,41 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    title Login or Register
+    link(rel='stylesheet' href='/style.css')
+
+  body
+    header.site-header
+      .header-top
+        img.logo(src='/images/logo.png')
+        .title-box The College Guide
+
+    nav.nav-bar
+      .nav-left
+      .nav-center
+        a(href="/") Home
+        a(href="/about") About
+        a(href="/schedule") Schedule
+        a(href="/contact") Contact
+        a(href="/resources") Resources
+      .nav-right
+        a.login-button(href="/login") Login/Register
+
+    .auth-container
+      .auth-box
+        h2 Welcome back to The College Guide
+        form#loginForm
+          input#username(type='text' placeholder='Username')
+          input#password(type='password' placeholder='Password')
+          button(type='submit') Login
+
+      .auth-box
+        h2 Welcome to The College Guide
+        form#registerForm
+          input#email(type='email' placeholder='Email')
+          input#newUsername(type='text' placeholder='Username')
+          input#newPassword(type='password' placeholder='Password')
+          button(type='submit') Register
+
+    script(src='/main.js' defer)

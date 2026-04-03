@@ -1,0 +1,63 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title About Us
+    link(rel='stylesheet', href='/style.css')
+
+  body
+    // ===== HEADER =====
+    header.site-header
+      .header-top
+        img.logo(src='/images/logo.png')
+        .title-box The College Guide
+
+    // ===== NAVBAR =====
+    nav.nav-bar
+      .nav-left
+      .nav-center
+        a(href="/") Home
+        a(href="/about") About
+        a(href="/schedule") Schedule
+        a(href="/contact") Contact
+        a(href="/resources") Resources
+      .nav-right
+        a.login-button(href="/login") Login/Register
+
+    // ===== MAIN CONTENT =====
+    main.container
+      section#about
+        h1 About Us
+        p Adjusting to college can be tough, but with the right tools, it doesn’t have to be!
+        p With our website, you will be able to navigate your college journey very smoothly.
+
+      section#team
+
+        // Samatar
+        .about-item.text-center
+          h2 Samatar Abdullahi
+          p.description Hey my name is Samatar, I’m a first-year computer programming student. My team and I are creating a website and app to help students navigate campus easily.
+          a.link_email(href='mailto:abdu0675@algonquinlive.com') abdu0675@algonquinlive.com
+          br
+          button.button(onclick="location.href='mailto:abdu0675@algonquinlive.com'") Contact
+
+        // Hiral
+        .about-item.text-center
+          h2 Hiral Prajapati
+          p.description Hello, my name is Hiral Prajapati. I am a first-year computer programming student at Algonquin College.
+          a.link_email(href='mailto:praj0083@algonquinlive.com') praj0083@algonquinlive.com
+          br
+          button.button(onclick="location.href='mailto:praj0083@algonquinlive.com'") Contact
+
+        // Rachel
+        .about-item.text-center
+          h2 Rachel Burnett
+          p.description Hello, my name is Rachel Burnett. I am a first-year computer programming student at Algonquin College. Looking forward to creating an easy to use guide for on-coming new students.
+          a.link_email(href='mailto:burn0447@algonquinlive.com') burn0447@algonquinlive.com
+          br
+          button.button(onclick="location.href='mailto:burn0447@algonquinlive.com'") Contact
+
+    // ===== FOOTER =====
+    footer
+      p © 2026 The College Guide | Contact us | Privacy | References
