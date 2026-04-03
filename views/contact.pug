@@ -1,0 +1,49 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Contact US!
+    link(rel='stylesheet' href='/style.css')
+
+  body
+    header.site-header
+      .header-top
+        img.logo(src='/images/logo.png')
+        .title-box The College Guide
+
+    nav.nav-bar
+      .nav-left
+      .nav-center
+        a(href="/") Home
+        a(href="/about") About
+        a(href="/schedule") Schedule
+        a(href="/contact") Contact
+        a(href="/resources") Resources
+      .nav-right
+        a.login-button(href="/login") Login/Register
+
+    main.container
+      h1 Contact Form:
+      p.subtitle We'll get back to you shortly.
+
+      form#Contactform
+        table
+          tr
+            td First Name:
+            td
+              input(type='text' name='fname' placeholder='Start typing...')
+          tr
+            td Last Name:
+            td
+              input(type='text' name='lname' placeholder='Start typing...')
+          tr
+            td Comments
+            td
+              input(type='text' name='message' placeholder='Type a message.')
+        button.button(type='submit') Submit
+
+    footer
+      p © 2026 The College Guide | Contact us | Privacy | References
+
+    script(src='/backend.js')
