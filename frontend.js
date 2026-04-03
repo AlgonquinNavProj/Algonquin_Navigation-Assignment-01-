@@ -61,5 +61,4 @@ function goToPage() {
         const errorMsg = document.getElementById("searchError");
         if (errorMsg) errorMsg.style.display = "block";
     }
-}
- 
+} 
