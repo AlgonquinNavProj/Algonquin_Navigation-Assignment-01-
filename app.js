@@ -7,6 +7,12 @@ const mongoose = require("mongoose");
 const app = express();
 const PORT = 3000;
 
+const isAuthenticated = (req, res, next) => {
+    if (req.session.userId) {
+        return next();
+    }
+    res.redirect("/login");
+}
 
 app.use(express.urlencoded({ extended: true })); 
 app.use(express.json());
@@ -58,8 +64,8 @@ app.get("/contact", (req, res) => {
 });
 
 // Schedule
-app.get("/schedule", (req, res) => {
-    res.render("schedule");
+app.get("/schedule", isAuthenticated, (req, res) => {
+    res.render("schedule"); 
 });
 
 // Resources
@@ -120,9 +126,10 @@ app.post("/login", async (req, res) => {
 // FORM  
 // =====================
 
-app.post("/contact", (req, res) => {
-    console.log(req.body);
-    res.send("Form submitted successfully!");
+const response = await fetch("/contact", { 
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ firstName, lastName, message })
 });
 
 // =====================

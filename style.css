@@ -1,0 +1,220 @@
+* {
+    box-sizing: border-box;
+}
+/* Global */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    background-color: #f5f7fa;
+}
+
+/* Header container */
+.site-header {
+    padding: 30px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: white;
+}
+
+/* Logo and Title */
+.header-top {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+/*logo*/
+.logo {
+    width: 120px;
+}
+
+/*title box*/
+.title-box {
+    color: #429a21;
+    padding: 15px 60px;
+    font-size: 26px;
+    font-weight: bold;
+    border: 3px solid #2f7d1f;
+    border-radius: 8px;
+}
+
+/* Navigation */
+.nav-bar {
+    width: 100%;
+    background-color: #429a21;
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.nav-left, .nav-center, .nav-right {
+    flex: 1;
+}
+
+.nav-center {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.nav-center a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    position: relative;
+}
+
+.nav-center a::after{
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: white;
+    left: 0;
+    bottom: -5px;
+    transition: 0.3s;
+}
+
+.nav-center a:hover::after {
+    width: 100%;
+}
+
+.nav-right {
+    display:flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.login-button {
+    background: white;
+    color: #2f7d1f;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.login-button:hover {
+    background: #e6f4ea;
+}
+
+/* Main Content */
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 40px;
+}
+
+/* Sections spacing */
+section {
+    margin-bottom: 40px;
+}
+
+/* about item, resource box */
+.about-item,
+.resource-box {
+    background: white;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-left: 5px solid #2f7d1f;
+    border-radius: 6px;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* Buttons */
+.button {
+    background: #2f7d1f;
+    color:white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.button:hover {
+    background: #256619;
+}
+
+/* form */
+form {
+    background: #f5f7fa;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+/* Login/Register page */
+
+.auth-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    background: linear-gradient(135deg, white, #ccc);
+}
+
+.auth-box {
+    background: white;
+    padding: 35px;
+    width: 320px;
+    border-radius: 10px;
+    text-align: left;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.02);
+}
+
+.auth-box h2 {
+    margin-bottom: 20px;
+}
+
+/* Schedule */
+.schedule {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.schedule th {
+    background: #2f7d1f;
+    color:white;
+}
+
+.schedule td, .schedule th {
+    border: 1px solid #ccc;
+    padding: 12px;
+}
+
+.schedule td:hover {
+    background: #e6f4ea;
+    cursor: pointer;
+}
+
+.sidebar{
+    margin: 20px 0;
+    display: flex;
+    gap: 10px;
+}
+
+/* footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: white;
+    color:#429a21;
+    margin-top: 30px;
+}
+
+
+
+
+

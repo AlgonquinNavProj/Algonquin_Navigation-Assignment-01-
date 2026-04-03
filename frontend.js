@@ -49,20 +49,20 @@ document.getElementById("contactForm").addEventListener("submit", async function
         return;
     }
 
-    try {
-        const response = await fetch("/submit", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ firstName, lastName, message })
-        });
+    const response = await fetch("/submit", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            firstName,
+            lastName,
+            message
+        })
+    });
 
-        if (!response.ok) throw new Error("Network response was not ok");
+    const data = await response.json();
+    alert(data.message);
 
-        const data = await response.json();
-        alert(data.message || "Message sent successfully!");
-        this.reset();
-    } catch (error) {
-        console.error("Error:", error);
-        alert("There was an error sending your message. Please try again later.");
-    }
+    this.reset();
 });
