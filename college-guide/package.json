@@ -1,0 +1,26 @@
+{
+  "name": "college-guide",
+  "version": "1.0.0",
+  "description": "CST8326 Assignment 2 - College Guide",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "body-parser": "^2.2.2",
+    "express": "^5.2.1",
+    "express-session": "^1.19.0",
+    "mongoose": "^9.3.3",
+    "pug": "^3.0.4"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+
+  }
+}
