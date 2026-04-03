@@ -1,3 +1,4 @@
+require("dotenv").config();
 console.log("APP IS STARTING...");
 const express = require("express");
 const path = require("path");
