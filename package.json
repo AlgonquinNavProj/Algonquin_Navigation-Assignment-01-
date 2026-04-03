@@ -11,6 +11,7 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "dotenv": "^17.4.0",
     "express": "^5.2.1",
     "mongodb-memory-server": "^11.0.1",
     "pug": "^3.0.4"
