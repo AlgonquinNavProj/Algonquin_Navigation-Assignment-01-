@@ -7,6 +7,18 @@ const mongoose = require("mongoose");
 const app = express();
 const PORT = 3000;
 
+
+app.use(express.urlencoded({ extended: true })); 
+app.use(express.json());
+
+const session = require("express-session");
+
+app.use(session({
+    secret: 'your_secret_key', 
+    resave: false,
+    saveUninitialized: false
+}));
+
 // =====================
 // User Model
 // =====================
@@ -55,42 +67,55 @@ app.get("/resources", (req, res) => {
     res.render("resources");
 });
 
-// Register
-app.get("/register", async (req, res) => {
-    const { email, username, password} = req.body;
 
-    if (!email || !username || !password) {
-        return res.json({ message: "All Fields Required"});
-    }
 
-    const existingUser = await User.findOne({ username });
-
-    if (existingUser) {
-        return res.json({ message: "User already exists" });
-    }
-
-    const newUser = new User({ email, username, password });
-    await newUser.save();
-
-    res.json({ message: "Registered successfully" });
+app.get("/register", (req, res) => {
+    res.render("register"); // Renders your register.pug
 });
 
-// Login
-app.get("/login", async (req, res) => {
+app.post("/register", async (req, res) => {
+    try {
+        const { email, username, password } = req.body;
+
+        if (!email || !username || !password) {
+            return res.send("All fields are required.");
+        }
+
+        const existingUser = await User.findOne({ username });
+        if (existingUser) {
+            return res.send("User already exists.");
+        }
+
+        const newUser = new User({ email, username, password });
+        await newUser.save();
+
+        res.redirect("/login"); // Send them to login after success
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Error during registration.");
+    }
+});
+
+app.get("/login", (req, res) => {
+    res.render("login");
+});
+
+app.post("/login", async (req, res) => {
+    const { username, password } = req.body;
     const user = await User.findOne({ username });
 
     if (!user) {
-        return res.json({ success: false, message: "User not found"});
+        return res.send("User not found.");
     }
 
     if (user.password !== password) {
-        return res.json({ success: false, message: "Wrong password"});
+        return res.send("Wrong password.");
     }
 
-    res.json({success: true });
 
+    req.session.userId = user._id; 
+    res.redirect("/"); 
 });
-
 // =====================
 // FORM  
 // =====================
@@ -116,7 +141,7 @@ const dbURI = process.env.MONGO_URI;
 
 if (!dbURI) {
     console.error("ERROR: MONGO_URI is not defined in the .env file.");
-    process.exit(1); // Stop the app if there's no DB connection string
+    process.exit(1); 
 }
 
 mongoose.connect(dbURI)
