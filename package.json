@@ -1,10 +1,11 @@
 {
   "name": "assignment2",
   "version": "1.0.0",
-  "description": "",
+  "description": "Travelling across campus can be hard,(cough,cough B building....). With our website you will be able to navigate campus very smoothly, no second guesses. Just you and your phone, you are able to go from Point A to Point B much quicker",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
@@ -17,5 +18,13 @@
     "mongodb-memory-server": "^11.0.1",
     "mongoose": "^9.4.1",
     "pug": "^3.0.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlgonquinNavProj/Algonquin_Navigation-Assignment-01-.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AlgonquinNavProj/Algonquin_Navigation-Assignment-01-/issues"
+  },
+  "homepage": "https://github.com/AlgonquinNavProj/Algonquin_Navigation-Assignment-01-#readme"
 }

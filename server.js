@@ -12,7 +12,7 @@ const PORT = 3000;
 // DATABASE
 // =====================
 
-mongoose.connect(process.env.MONGO_URI)
+mongoose.connect("mongodb+srv://abdullahisa:Grammond12@webprogramming.7pncsxy.mongodb.net/myapp?retryWrites=true&w=majority&appName=WebProgramming")
     .then(() => console.log("MongoDB connected!"))
     .catch((err) => console.error("failed to connect:", err));
 
