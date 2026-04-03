@@ -1,4 +1,42 @@
-//Contact Form
+// Adding 'Enter' key support for the search box
+document.getElementById("searchBox")?.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        goToPage();
+    }
+});
+//Search and Filtering
+function goToPage() {
+    const input = document.getElementById("searchBox").value.toLowerCase().trim();
+    const errorMsg = document.getElementById("searchError");
+
+    if (!input) return;
+
+    // Reset error message visibility on new search
+    if (errorMsg) errorMsg.style.display = "none";
+
+    if (input.includes("home")) {
+        window.location.href = "index.html";
+    } 
+    else if (input.includes("about")) {
+        window.location.href = "About.html";
+    } 
+    else if (["schedule", "class", "timetable", "courses", "cst"].some(keyword => input.includes(keyword))) {
+        window.location.href = "schedule.html";
+    } 
+    else if (["contact", "email", "help"].some(keyword => input.includes(keyword))) {
+        window.location.href = "Contact.html";
+    } 
+    else if (["resource", "map", "link"].some(keyword => input.includes(keyword))) {
+        window.location.href = "Resources.html";
+    } 
+    else if (input.includes("algonquin")) {
+        window.location.href = "index.html#home";
+    } 
+    else {
+        if (errorMsg) errorMsg.style.display = "block";
+    }
+}
+//Contact
 document.getElementById("contactForm").addEventListener("submit", async function(event) {
     event.preventDefault();
 
@@ -11,54 +49,20 @@ document.getElementById("contactForm").addEventListener("submit", async function
         return;
     }
 
-    const response = await fetch("/submit", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            firstName,
-            lastName,
-            message
-        })
-    });
+    try {
+        const response = await fetch("/submit", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ firstName, lastName, message })
+        });
 
-    const data = await response.json();
-    alert(data.message);
+        if (!response.ok) throw new Error("Network response was not ok");
 
-    this.reset();
+        const data = await response.json();
+        alert(data.message || "Message sent successfully!");
+        this.reset();
+    } catch (error) {
+        console.error("Error:", error);
+        alert("There was an error sending your message. Please try again later.");
+    }
 });
-
-//Search and Filtering:
-
-function goToPage() {
-    const input = document.getElementById("searchBox").value.toLowerCase().trim();
- 
-    // Don't search if the box is empty
-    if (!input) return;
- 
-    // Map keywords → pages
-    if (input.includes("home")) {
-        window.location.href = "index.html";
-    }
-    else if (input.includes("about")) {
-        window.location.href = "About.html";
-    }
-    else if (input.includes("schedule") || input.includes("class") || input.includes("timetable")|| input.includes("courses")|| input.includes("cst")+) {
-        window.location.href = "schedule.html";
-    }
-    else if (input.includes("contact") || input.includes("email") || input.includes("help")) {
-        window.location.href = "Contact.html";
-    }
-    else if (input.includes("resource") || input.includes("map") || input.includes("link")) {
-        window.location.href = "Resources.html";
-    }
-    else if (input.includes("algonquin")) {
-        window.location.href = "index.html#home";
-    }
-    else {
-        // Friendlier than an alert — shows a message on the page instead
-        const errorMsg = document.getElementById("searchError");
-        if (errorMsg) errorMsg.style.display = "block";
-    }
-} 
