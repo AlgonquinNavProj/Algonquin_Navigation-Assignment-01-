@@ -112,9 +112,11 @@ selectedCell.innerText = "";
 
 });
 
-/* Login system */
+    /* =====================
+       2. Login system
+       ===================== */
 
-// REGISTER HANDLER
+    // REGISTER HANDLER
     document.getElementById("registerForm")?.addEventListener("submit", async function (e) {
         e.preventDefault();
         const email = document.getElementById("email").value.trim();
@@ -139,7 +141,8 @@ selectedCell.innerText = "";
 
     // LOGIN HANDLER
     document.getElementById("loginForm")?.addEventListener("submit", async function(e) {
-        e.preventDefault();
+        e.preventDefault(); 
+
         const username = document.getElementById("username").value.trim();
         const password = document.getElementById("password").value.trim();
 
@@ -152,18 +155,19 @@ selectedCell.innerText = "";
         const data = await res.json();
 
         if (data.success) {
-            // SUCCESS: This is what prevents the black JSON screen!
-            alert("Login Successful");
             window.location.href = "/"; 
         } else {
-            alert(data.message || "Invalid Login");
+            alert(data.message || "Login failed");
         }
     });
 
-});
+}); // Correctly closes DOMContentLoaded
 
-/* --- Global Functions --- */
+/* =====================
+   3. Global Functions
+   ===================== */
 
+// Defined outside so the Pug 'onclick' can find it
 async function logout() {
     await fetch("/logout"); 
     window.location.href = "/login";

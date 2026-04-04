@@ -20,26 +20,26 @@ html
         a(href="/contact") Contact
         a(href="/resources") Resources
       .nav-right
-        a.login-button(href="/login") Login/Register
+        if isLoggedIn
+          span(style="color:white; margin-right:15px;") Welcome, #{username}
+          button.login-button(onclick="logout()") Logout
+        else
+          a.login-button(href="/login") Login/Register
 
-    .auth-container
-      .auth-box
-        h2 Welcome back to The College Guide
-        // Added action="/login" and method="POST"
-        form#loginForm(action="/login" method="POST")
-          // Added name="username" and name="password"
-          input#username(type='text' name='username' placeholder='Username' required)
-          input#password(type='password' name='password' placeholder='Password' required)
-          button(type='submit') Login
 
-      .auth-box
-        h2 Welcome to The College Guide
-        // Added action="/register" and method="POST"
-        form#registerForm(action="/register" method="POST")
-          // Added name="email", name="username", and name="password"
-          input#email(type='email' name='email' placeholder='Email' required)
-          input#newUsername(type='text' name='username' placeholder='Username' required)
-          input#newPassword(type='password' name='password' placeholder='Password' required)
-          button(type='submit') Register
+.auth-box
+  h2 Welcome back to The College Guide
+  form#loginForm
+    input#username(type='text' name='username' placeholder='Username' required)
+    input#password(type='password' name='password' placeholder='Password' required)
+    button(type='submit') Login
+
+.auth-box
+  h2 Welcome to The College Guide
+  form#registerForm
+    input#email(type='email' name='email' placeholder='Email' required)
+    input#newUsername(type='text' name='username' placeholder='Username' required)
+    input#newPassword(type='password' name='password' placeholder='Password' required)
+    button(type='submit') Register
 
     script(src='/main.js' defer)
