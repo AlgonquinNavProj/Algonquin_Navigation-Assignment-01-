@@ -37,7 +37,8 @@ function goToPage() {
     }
 }
 //Contact
-document.getElementById("contactForm").addEventListener("submit", async function(event) {
+//Contact
+document.getElementById("contactForm")?.addEventListener("submit", async function(event) {
     event.preventDefault();
 
     const firstName = document.querySelector('input[name="fname"]').value;
@@ -49,20 +50,21 @@ document.getElementById("contactForm").addEventListener("submit", async function
         return;
     }
 
-    const response = await fetch("/submit", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            firstName,
-            lastName,
-            message
-        })
-    });
+    try {
+        const response = await fetch("/contact", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ firstName, lastName, message })
+        });
 
-    const data = await response.json();
-    alert(data.message);
-
-    this.reset();
+        const data = await response.json();
+        alert(data.message);
+        
+        if (response.ok) {
+            this.reset(); // Clears the form on success
+        }
+    } catch (error) {
+        console.error("Error:", error);
+        alert("Something went wrong. Please try again.");
+    }
 });

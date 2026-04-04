@@ -50,7 +50,7 @@ let text = prompt("Enter schedule item:");
 
 if (!text || text.trim() === "") {
 
-this.alert("Invalid input!");
+alert("Invalid input!");
 
 return;
 
@@ -84,7 +84,7 @@ return;
 
 if(text.trim() === ""){
 
-this.alert("Cannot be empty!");
+alert("Cannot be empty!");
 
 return;
 
@@ -153,16 +153,14 @@ document.getElementById("loginForm")?.addEventListener("submit", async function(
         body: JSON.stringify({ username, password})
     });
 
+        // Inside your registerForm listener
     const data = await res.json();
+    alert(data.message);
 
-    if (data.success){
-        localStorage.setItem("loggedInUser", username);
-        alert("Login Successful");
-        window.location.href = "/";
-    } else {
-        alert(data.message);
+    if (res.ok) {
+        // Redirect to login or home after successful registration
+        window.location.href = "/login"; 
     }
-});
 
 // navbar logged in user display
 const navUser = document.getElementById("navUser");
@@ -177,7 +175,9 @@ if(navUser && loggedUser){
 
 });
 
-function logout(){
+async function logout() {
     localStorage.removeItem("loggedInUser");
-    location.reload();
+    // Tell the server to destroy the session
+    await fetch("/logout"); 
+    window.location.href = "/login";
 }
