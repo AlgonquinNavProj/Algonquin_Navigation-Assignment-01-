@@ -21,30 +21,34 @@ html
         a(href="/contact") Contact
         a(href="/resources") Resources
       .nav-right
-        a.login-button(href="/login") Login/Register
+        if isLoggedIn
+          span(style="color:white; margin-right:15px;") Welcome, #{username}
+          button.login-button(onclick="logout()") Logout
+        else
+          a.login-button(href="/login") Login/Register
 
     main.container
       h1 Contact Form:
       p.subtitle We'll get back to you shortly.
 
-      form#Contactform
+  
+      form#contactForm
         table
           tr
             td First Name:
             td
-              input(type='text' name='fname' placeholder='Start typing...')
+              input(type='text' name='fname' placeholder='Start typing...' required)
           tr
             td Last Name:
             td
-              input(type='text' name='lname' placeholder='Start typing...')
+              input(type='text' name='lname' placeholder='Start typing...' required)
           tr
             td Comments
             td
-              input(type='text' name='message' placeholder='Type a message.')
+              input(type='text' name='message' placeholder='Type a message.' required)
         button.button(type='submit') Submit
 
     footer
       p © 2026 The College Guide | Contact us | Privacy | References
 
- 
-script(src="/js/frontend.js")
+    script(src="/frontend.js")
