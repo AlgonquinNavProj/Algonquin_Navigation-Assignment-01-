@@ -17,15 +17,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true })); 
 app.use(express.json());
 
-// Session MUST come before routes and isAuthenticated
+
 app.use(session({
-    secret: process.env.SESSION_SECRET || 'your_secret_key', 
+    secret: process.env.SESSION_SECRET || 'Secretk', 
     resave: false,
     saveUninitialized: false,
-    cookie: { maxAge: 1000 * 60 * 60 * 24 } // 24-hour persistence
+    cookie: { maxAge: 1000 * 60 * 60 * 24 } 
 }));
 
-// Global user variable for Pug templates
+
 app.use((req, res, next) => {
     res.locals.isLoggedIn = !!req.session.userId;
     res.locals.username = req.session.username;
@@ -33,11 +33,10 @@ app.use((req, res, next) => {
 });
 
 const isAuthenticated = (req, res, next) => {
-    if (req.session.userId) {
-        return next();
-    }
+    if (req.session.userId) return next();
     res.redirect("/login");
-};
+}
+
 
 // =====================
 // User Model (Consider moving this to /models/User.js)
@@ -64,10 +63,6 @@ app.get("/about", (req, res) => res.render("about"));
 app.get("/contact", (req, res) => res.render("contact"));
 app.get("/resources", (req, res) => res.render("resources"));
 
-// Protected Route
-app.get("/schedule", isAuthenticated, (req, res) => {
-    res.render("schedule"); 
-});
 
 // Auth Routes
 app.get("/register", (req, res) => res.render("register"));
@@ -80,7 +75,6 @@ app.post("/register", async (req, res) => {
         const existingUser = await User.findOne({ username });
         if (existingUser) return res.send("User already exists.");
 
-        // NOTE: You should use bcrypt.hash(password, 10) here!
         const newUser = new User({ email, username, password });
         await newUser.save();
 
@@ -96,7 +90,6 @@ app.post("/login", async (req, res) => {
     const { username, password } = req.body;
     const user = await User.findOne({ username });
 
-    // NOTE: Use bcrypt.compare(password, user.password) here!
     if (!user || user.password !== password) {
         return res.status(401).json({ success: false, message: "Invalid credentials" });
     }
