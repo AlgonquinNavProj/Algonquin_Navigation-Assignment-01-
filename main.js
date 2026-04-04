@@ -114,70 +114,57 @@ selectedCell.innerText = "";
 
 /* Login system */
 
-//Register
-document.getElementById("registerForm")?.addEventListener("submit", async function (e){
-    e.preventDefault();
+// REGISTER HANDLER
+    document.getElementById("registerForm")?.addEventListener("submit", async function (e) {
+        e.preventDefault();
+        const email = document.getElementById("email").value.trim();
+        const username = document.getElementById("newUsername").value.trim();
+        const password = document.getElementById("newPassword").value.trim();
 
-    const email = document.getElementById("email").value.trim();
-    const username = document.getElementById("newUsername").value.trim();
-    const password = document.getElementById("newPassword").value.trim();
+        if (!email || !username || !password) return alert("All fields required");
 
-    if (!email || !username || !password) {
-        return alert("All fields required")
-    }
+        const res = await fetch("/register", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, username, password })
+        });
 
-    const res = await fetch("/register", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ email, username, password})
+        const data = await res.json();
+        alert(data.message);
+
+        if (res.ok) {
+            window.location.href = "/login"; 
+        }
     });
 
-    const data = await res.json();
-    alert(data.message);
-});
+    // LOGIN HANDLER
+    document.getElementById("loginForm")?.addEventListener("submit", async function(e) {
+        e.preventDefault();
+        const username = document.getElementById("username").value.trim();
+        const password = document.getElementById("password").value.trim();
 
-//Login
-document.getElementById("loginForm")?.addEventListener("submit", async function(e){
-    e.preventDefault();
+        const res = await fetch("/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, password })
+        });
 
-    const username = document.getElementById("username").value.trim();
-    const password = document.getElementById("password").value.trim();
+        const data = await res.json();
 
-    const res = await fetch("/login", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ username, password})
+        if (data.success) {
+            // SUCCESS: This is what prevents the black JSON screen!
+            alert("Login Successful");
+            window.location.href = "/"; 
+        } else {
+            alert(data.message || "Invalid Login");
+        }
     });
 
-        // Inside your registerForm listener
-    const data = await res.json();
-    alert(data.message);
-
-    if (res.ok) {
-        // Redirect to login or home after successful registration
-        window.location.href = "/login"; 
-    }
-
-// navbar logged in user display
-const navUser = document.getElementById("navUser");
-const loggedUser = localStorage.getItem("loggedInUser");
-
-if(navUser && loggedUser){
-    navUser.innerHTML = `
-            <span style="color:white; margin-right:10px;">Welcome, ${loggedUser}</span>
-            <button onclick="logout()" class="login-button">logout</button>
-            `;
-}
-
 });
+
+/* --- Global Functions --- */
 
 async function logout() {
-    localStorage.removeItem("loggedInUser");
-    // Tell the server to destroy the session
     await fetch("/logout"); 
     window.location.href = "/login";
 }
