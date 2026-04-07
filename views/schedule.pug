@@ -21,11 +21,7 @@ html
         a(href="/contact") Contact
         a(href="/resources") Resources
       .nav-right
-        if isLoggedIn
-          span(style="color:white; margin-right:15px;") Welcome, #{username}
-          button.login-button(onclick="logout()") Logout
-        else
-          a.login-button(href="/login") Login/Register
+        a.login-button(href="/login") Login/Register
 
     .topbar
       input(type='text' placeholder='Schedule Title')
@@ -33,14 +29,9 @@ html
 
     .container
       .sidebar
-        if isLoggedIn
-          #addBtn.button Add Item
-          #editBtn.button Edit Item
-          #deleteBtn.button Delete Item
-        else
-          p(style="font-size: 0.8rem; padding: 10px; color: #666;") 
-            a(href="/login") Login
-            |  to edit your schedule.#addBtn.button Add Item
+        #addBtn.button Add Item
+        #editBtn.button Edit Item
+        #deleteBtn.button Delete Item
 
       .schedule
         table(border='1')
@@ -65,7 +56,6 @@ html
               td
               td
 
-    script(src='/backend.js')
     script(src='/main.js')
 
     footer
